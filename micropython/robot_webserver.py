@@ -20,34 +20,6 @@ async def connect_to_wifi():
     print("Connected to Wi-Fi!")
     print("IP Address:", wlan.ifconfig()[0])
 
-# HTMLページの生成
-def webpage():
-    html = """
-    <!DOCTYPE html>
-    <html>
-    <head>
-    <title>Pico W LED Control</title>
-    <script>
-        async function sendCommand(command) {
-            try {
-                // Fetch APIでサーバーにリクエストを送信
-                const response = await fetch(`/${command}`);
-            } catch (error) {
-                console.error('Error sending command:', error);
-            }
-        }
-    </script>
-    </head>
-    <body>
-    <h1>Raspberry Pi Pico W</h1>
-    <h2>LED Control</h2>
-    <button id="nbtn" onclick="sendCommand('led/on')">Turn ON</button>
-    <button id="fbtn" onclick="sendCommand('led/off')">Turn OFF</button>
-    </body>
-    </html>
-    """
-    return html
-
 # クライアントリクエストの処理関数
 async def serve_client(reader, writer):
     request_line = await reader.readline()
@@ -74,7 +46,8 @@ async def main():
     print("Server is running on port 80")
 
     while True:
-        await asyncio.sleep(1)
+        robot.set_frames()
+        await asyncio.sleep(0.03)
 
 try:
     asyncio.run(main())
