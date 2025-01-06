@@ -4,8 +4,8 @@ from machine import Pin
 import robot
 import html
 
-SSID = "WARPSTAR-AC6D64"   # Wi-FiのSSIDを入力
-PASSWORD = "435C37A1AD1BE" # Wi-Fiのパスワードを入力
+SSID = "your-ssid"   # Wi-FiのSSIDを入力
+PASSWORD = "your-password" # Wi-Fiのパスワードを入力
 
 #led = Pin('LED', Pin.OUT)
 
